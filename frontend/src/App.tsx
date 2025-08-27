@@ -1,26 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Manufacturers from "./Manufacturers"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Manufacturers from "./pages/Manufacturers"
+import Navbar from "./components/Navbar"
+import Sidebar from "./components/Sidebar"
 
 function Home() {
   return (
-    <>
-      <h1>Home</h1>
-      <p>HOMEPAGE</p>
-      <Link to="/manufacturers"> Go To Manufacturers </Link>
-    </>
+    <div>
+      <h1 style={{
+        fontSize: 30,
+        position: "fixed",
+        top: 60,
+        left: 275,
+        }}>
+          Homepage
+      </h1>
+    </div>
   )
 }
+
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
+      <Sidebar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/manufacturers" element={<Manufacturers />} />
+        <Route path="/" element={<Home />}/>
+        <Route path="/manufacturers" element={<Manufacturers />}></Route>
       </Routes>
     </BrowserRouter>
   )
