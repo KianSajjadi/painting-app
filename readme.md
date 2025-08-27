@@ -9,6 +9,7 @@ Initially I was going to write this in elixir using the phoenix framework with l
 Frontend:
 - React (Typescript) - [structure](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md)
 - vite build tool
+- radix-ui
 
 Backend:
 - Phoenix (Elixir)

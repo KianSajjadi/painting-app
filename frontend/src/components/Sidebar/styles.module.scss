@@ -1,0 +1,30 @@
+.root {
+  background: rgb(32, 27, 27);
+  height: 100%;
+  padding-left: 3px;
+}
+
+.sidebarLink {
+  color: cyan;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.4s, color 0.4s;
+  &:hover {
+    background: #0b121f;
+  }
+}
+
+.sidebarLinkActive {
+  background: green;
+}
+
+.sidebarCollapseButton {
+  color: cyan;
+  background: rgb(32, 27, 27);
+  transition: background 0.4s, color 0.4s;
+  &:hover {
+    background: orange
+  }
+}
