@@ -1,4 +1,4 @@
-import manufacturers_placeholder from '../assets/manufacturers-placeholder.jpg'
+import manufacturers_placeholder from '../../assets/manufacturers-placeholder.jpg'
 
 type Manufacturer = {
   id: number;

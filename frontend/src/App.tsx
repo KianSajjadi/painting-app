@@ -27,7 +27,13 @@ function App() {
                 <Navbar />
               </Box>
               {/* Body */}
-              <Box gridColumn="2 / -1"></Box>
+              <Box gridColumn="2 / -1">
+                <Routes>
+                  <Route path="/manufacturers" element={<Manufacturers />}></Route>
+                  <Route path="/paints" element={<Paints />}></Route>
+                  <Route path="/" element={<Homepage />}></Route>
+                </Routes>
+              </Box>
               {/* Sidebar */}
               <Box gridColumn="1" gridRow="2">
                 <Sidebar />
@@ -37,11 +43,6 @@ function App() {
             </Grid>
             <Flex>
             </Flex>
-            <Routes>
-              <Route path="/manufacturers" element={<Manufacturers />}></Route>
-              <Route path="/paints" element={<Paints />}></Route>
-              <Route path="/" element={<Homepage />}></Route>
-            </Routes>
           </Theme>
         </BrowserRouter>
       </body>
