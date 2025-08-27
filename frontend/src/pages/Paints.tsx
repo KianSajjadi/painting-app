@@ -1,13 +1,12 @@
-type Manufacturer = {
+type Paint = {
   id: number;
   name: string;
+  manufacturer: string;
+  range: string;
 };
 
 // Placeholder - will get this from db at some point
-const manufacturers: Manufacturer[] = [
-  {id: 0, name: "Vallejo"},
-  {id: 1, name: "Pro Acryl"},
-  {id: 2, name: "Badger"}
+const paints: Paint[] = [
 ]
 
 export default function Manufacturers() {
@@ -19,7 +18,7 @@ export default function Manufacturers() {
         top: 60,
         left: 275,
         }}>
-          Manufacturers
+          Paints
       </h1>
       <p>This page probably shouldn't exist</p>
       
@@ -36,7 +35,7 @@ export default function Manufacturers() {
           </tr>
         </thead>
         <tbody>
-          {manufacturers.map((m) => (
+          {paints.map((m) => (
             <tr key={m.id}>
               <td style={{}}>{m.id}</td>
               <td style={{}}>{m.name}</td> 

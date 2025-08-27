@@ -1,6 +1,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Manufacturers from "./pages/Manufacturers"
+import Paints from "./pages/Paints"
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
 
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/manufacturers" element={<Manufacturers />}></Route>
+        <Route path="/paints" element={<Paints />}></Route>
       </Routes>
     </BrowserRouter>
   )
