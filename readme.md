@@ -7,7 +7,7 @@ One day I decided that I want to try enter the golden demon competition. Realise
 Initially I was going to write this in elixir using the phoenix framework with liveview for my frontend, I might still but for now:
 
 Frontend:
-- React (Typescript)
+- React (Typescript) - [structure](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md)
 - vite build tool
 
 Backend:
