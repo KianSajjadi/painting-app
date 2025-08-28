@@ -1,7 +1,7 @@
-import { Table, Text, Box, AspectRatio, Container, Dialog, Button } from "@radix-ui/themes";
+import { Table, Text, Box, AspectRatio, Container, Dialog, Button, IconButton, Tooltip } from "@radix-ui/themes";
 import { ScrollArea } from "radix-ui";
 import { useState, useRef } from "react";
-import { X } from "lucide-react"
+import { X, ZoomIn } from "lucide-react"
 import AddPaintCard from "./components/AddPaint";
 import styles from "./styles.module.scss"
 
@@ -131,16 +131,21 @@ export default function Paints() {
                     column == "image_path" ? 
                     <Table.Cell>
                       <Dialog.Root>
-                        <Dialog.Trigger>
-                          <Container className={styles.imgContainer}>
-                            <AspectRatio ratio={16 / 9}>
-                              <img src={paint[column]} alt={paint.colour_name} className={styles.img}/>
-                            </AspectRatio>
-                          </Container>
-                        </Dialog.Trigger>
+                        <Tooltip content="Click to zoom in">
+                          <Dialog.Trigger>
+                            <Container className={styles.imgContainer}>
+                              <AspectRatio ratio={16 / 9}>
+                                <img src={paint[column]} alt={paint.colour_name} className={styles.img} />
+                                <IconButton className={styles.zoomBadge}>
+                                  <ZoomIn />
+                                </IconButton>
+                              </AspectRatio>
+                            </Container>
+                          </Dialog.Trigger>
+                        </Tooltip>
                         <Dialog.Content>
                           <img src={paint[column]} alt={paint.colour_name} className={styles.img}/>
-                          <Dialog.Close>
+                          <Dialog.Close >
                             <Button><X /></Button>
                           </Dialog.Close>
                         </Dialog.Content>
