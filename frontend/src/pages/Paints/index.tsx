@@ -24,6 +24,15 @@ const columns: Column[] = [
   "colour_name", "manufacturer", "vessel", "range", "sku", "opacity"
 ]
 
+const better_column_names = [
+  {"colour_name": "Colour Name"},
+  {"manufacturer": "Manufacturer"},
+  {"vessel": "Vessel"},
+  {"range": "Range"},
+  {"sku": "SKU"},
+  {"opacity": "Opacity"}
+]
+
 export default function Paints() {
   return (
     <Table.Root size="3">
@@ -31,7 +40,9 @@ export default function Paints() {
         <Table.Row>
         {columns.map((column) => (
             <Table.ColumnHeaderCell>
-              <Text>{column}</Text>
+              {better_column_names.map(bcn => (
+                <Text>{bcn[column]}</Text>
+              ))}
             </Table.ColumnHeaderCell>
         ))}
       </Table.Row>
