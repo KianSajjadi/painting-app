@@ -21,3 +21,8 @@ Backend:
 - Github Actions - most likely on a self hosted runner
 - Hashicorp vault for secrets management
 - 
+
+
+
+## Todo
+[TodoList](todo.md)
