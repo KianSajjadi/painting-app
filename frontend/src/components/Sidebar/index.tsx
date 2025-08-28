@@ -10,10 +10,10 @@ type Link = {
   icon: React.ReactNode;
 }
 
-const home = {path: "/", text: "Paintman", icon: <Brush size={20}/>}
+const home = {path: "/", text: "Paintman", icon: <Brush size={25}/>}
 
 const links: Link[] = [
-  {path: "/paints", text: "Paints", icon: <PaintBucket size={20}/>},
+  {path: "/paints", text: "Paints", icon: <PaintBucket  size={20}/>},
   {path: "/schemes", text: "Schemes", icon: <Palette size={20}/>},
   {path: "/manufacturers", text: "Manufacterers", icon: <Factory size={20}/>},
   {path: "/settings", text: "Settings", icon: <Settings size={20}/>}
@@ -24,11 +24,15 @@ function sidebarLinkClassName({ isActive }: { isActive: boolean }) {
 }
 
 function collapsinator(link: Link, collapsed: boolean) {
-  return collapsed ? link.icon : ( <> {link.icon} {link.text} </> )
+  return (
+    <Text size={link.text == "Paintman" ? "5" : "3"} align="center">
+      {link.icon} {!collapsed && link.text}
+    </Text>
+  )
 }
 
-const expandButton = <ChevronRight size={20}/>;
-const collapseButton = <ChevronLeft size={20}/>;
+const expandButton = <ChevronRight size={25}/>;
+const collapseButton = <ChevronLeft size={25}/>;
 
 export default function Sidebar() {
   const [collapsed, setCollapsed]= useState(false);
@@ -36,13 +40,11 @@ export default function Sidebar() {
   return (
     <Flex direction="column" gap="3" className={styles.root}>
       <NavLink to="/" className={sidebarLinkClassName}>
-        <Text size="4" color="cyan">{collapsinator(home, collapsed)}</Text>
+        {collapsinator(home, collapsed)}
       </NavLink>
       {links.map((link) => (
-        <NavLink to={link.path} className={sidebarLinkClassName}>
-          <Text size="2" color="cyan">
+        <NavLink to={link.path} className={sidebarLinkClassName} key={link.path}>
             {collapsinator(link, collapsed)}
-          </Text>
         </NavLink>
       ))}
       <Button className={styles.sidebarCollapseButton} onClick={() => setCollapsed((c) => !c)}>{collapsed ? expandButton : collapseButton}</Button>

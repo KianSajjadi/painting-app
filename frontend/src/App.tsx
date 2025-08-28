@@ -10,11 +10,9 @@ import Sidebar from "./components/Sidebar"
 
 function App() {
   return (
-    <html>
-      <body>
         <BrowserRouter>
           <Theme
-            accentColor="mint"
+            accentColor="cyan"
             appearance="dark"
             grayColor="gray"
             panelBackground="solid"
@@ -45,8 +43,6 @@ function App() {
             </Flex>
           </Theme>
         </BrowserRouter>
-      </body>
-    </html>
   )
 }
 

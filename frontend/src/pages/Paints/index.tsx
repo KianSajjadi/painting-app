@@ -1,7 +1,12 @@
-import { Table, Text, Button } from "@radix-ui/themes"
+import { Table, Text, Button, Card } from "@radix-ui/themes"
+import { Plus } from "lucide-react"
 import AddPaint from "../components/AddPaint"
+import { Popover } from "radix-ui";
+import styles from "./styles.module.scss"
+import { useState, useRef } from "react"
 
-type Paint = {
+export type Paint = {
+  id: number;
   colour_name: string;
   manufacturer: string;
   vessel: string;
@@ -10,22 +15,26 @@ type Paint = {
   sku?: string;
 };
 
+export type NewPaint = Omit<Paint, "id">;
+
 type Column = keyof Paint
 
 // Placeholder - will get this from db at some point
-const paints: Paint[] = [
-  {colour_name:"hexed lichen", manufacturer: "Vallejo", vessel: "dropper", range: "game colour"},
-  {colour_name:"black", manufacturer: "Vallejo", vessel: "dropper", range: "model colour"},
-  {colour_name:"hexed lichen", manufacturer: "Vallejo", vessel: "dropper", range: "game colour"},
-  {colour_name:"hexed lichen", range: "game colour", manufacturer: "Vallejo", vessel: "dropper"},
-  {colour_name:"hexed lichen", manufacturer: "Vallejo", vessel: "dropper", range: "game colour"},
+const initial_paints: Paint[] = [
+  {id: 0, colour_name:"black", manufacturer: "Vallejo", vessel: "dropper", range: "model colour"},
+  {id: 1, colour_name:"hexed lichen", manufacturer: "Vallejo", vessel: "dropper", range: "game colour"},
+  {id: 2, colour_name:"beasty brown", manufacturer: "Vallejo", vessel: "dropper", range: "game colour"},
+  {id: 3, colour_name:"sick green", range: "game colour", manufacturer: "Vallejo", vessel: "dropper"},
+  {id: 4, colour_name:"golden yellow", manufacturer: "Vallejo", vessel: "dropper", range: "game colour"},
+  {id: 5, colour_name:"Matte Black", manufacturer: "Rustoleum", vessel: "Spray Can", range: "2x Coverage"},
 ]
 
 const columns: Column[] = [
-  "colour_name", "manufacturer", "vessel", "range", "sku", "opacity"
+  "id", "colour_name", "range", "manufacturer", "vessel", "sku", "opacity"
 ]
 
 const better_column_names: Record<Column, string> = {
+  id: "ID",
   colour_name: "Colour Name",
   manufacturer: "Manufacturer",
   vessel: "Vessel",
@@ -35,11 +44,29 @@ const better_column_names: Record<Column, string> = {
 };
 
 export default function Paints() {
+  const [paints, setPaints] = useState<Paint[]>(initial_paints);
+  const [open, setOpen] = useState(false);
+
+  const nextIdRef = useRef(
+    paints.length ? Math.max(...paints.map(x => x.id)) + 1 : 1
+  );
+
+  const handleAdd = (p: NewPaint) => {
+    const with_id: Paint = {id: nextIdRef.current++, ...p };
+    setPaints(prev => [with_id, ...prev]);
+    setOpen(false);
+  };
+
   return (
     <>
-      <Button onClick={AddPaint}>
-        <Text>Add Paint</Text>
-      </Button>
+      <Popover.Root open={open} onOpenChange={setOpen}>
+        <Popover.Trigger asChild>
+          <Button className={styles.addPaintButton} variant="soft"><Plus /></Button>
+        </Popover.Trigger>
+        <Popover.Content className={styles.popoverContent}>
+          <Card className={styles.popoverCard}><AddPaint onAdd={handleAdd}/></Card>
+        </Popover.Content>
+      </Popover.Root>
       <Table.Root size="3">
         <Table.Header>
           <Table.Row>

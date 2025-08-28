@@ -2,22 +2,26 @@
   background: rgb(32, 27, 27);
   height: 100%;
   padding-left: 3px;
+  svg {
+    flex-shrink: 0;
+    vertical-align: sub;
+  };
 }
 
 .sidebarLink {
   color: cyan;
   text-decoration: none;
-  padding: 10px 12px;
+  padding: 15px;
   border-radius: 6px;
   font-weight: 500;
   transition: background 0.4s, color 0.4s;
-  &:hover {
+  &:hover:not(:focus) {
     background: #0b121f;
   }
 }
 
 .sidebarLinkActive {
-  background: green;
+  background: rgba(106, 245, 255, 0.274);
 }
 
 .sidebarCollapseButton {
@@ -26,5 +30,6 @@
   transition: background 0.4s, color 0.4s;
   &:hover {
     background: orange
-  }
+  };
+  position: ""
 }
