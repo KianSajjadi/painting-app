@@ -1,25 +1,5 @@
-.fieldName {
-  padding: 2px;
-  padding-bottom: 2px;
-}
-
-.formLabel {
-  padding: 4px;
-}
-
-.formControl {
-  padding: 3px;
-}
-
-.textFieldRoot {
-  padding: 3px;
-  padding-bottom: 2px;
-}
-
-.textFieldSlot {
-  padding: 10px;
-}
-
-.detailsTab {
-  padding: 0;
+.addPaintButton {
+  &:hover {
+    color: var(--cyan-10)
+  }
 }

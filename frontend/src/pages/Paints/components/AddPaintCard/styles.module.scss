@@ -1,18 +1,29 @@
-.addPaintButton {
-  &:hover {
-    color: var(--cyan-10)
-  }
+.fieldName {
+  padding: 2px;
+  padding-bottom: 2px;
 }
 
-.popoverContent {
-  z-index: 2;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+.formLabel {
+  padding: 4px;
 }
 
-.popoverCard {
-  background: var(--color-panel);
-  border: 1px solid var(--cyan-6);
-  box-shadow: var(--shadow-6);
+.formControl {
+  padding: 3px;
+}
+
+.textFieldRoot {
+  padding: 2px;
+  padding-bottom: 2px;
+}
+
+.textFieldSlot {
+  padding: 10px;
+}
+
+.detailsTab {
+  padding: 0;
+}
+
+.hiddenButton {
+  display: none
 }
