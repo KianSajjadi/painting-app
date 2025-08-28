@@ -1,9 +1,8 @@
 import { Table, Text, Button, Card } from "@radix-ui/themes"
-import { Plus } from "lucide-react"
-import AddPaint from "../components/AddPaint"
-import { Popover } from "radix-ui";
 import styles from "./styles.module.scss"
 import { useState, useRef } from "react"
+import AddPaintCard from "./components/AddPaintCard"
+import AddPaintImageCard from "./components/AddPaintImageCard"
 
 export type Paint = {
   id: number;
@@ -59,14 +58,7 @@ export default function Paints() {
 
   return (
     <>
-      <Popover.Root open={open} onOpenChange={setOpen}>
-        <Popover.Trigger asChild>
-          <Button className={styles.addPaintButton} variant="soft"><Plus /></Button>
-        </Popover.Trigger>
-        <Popover.Content className={styles.popoverContent}>
-          <Card className={styles.popoverCard}><AddPaint onAdd={handleAdd}/></Card>
-        </Popover.Content>
-      </Popover.Root>
+      <AddPaintCard open={open} setOpen={setOpen} handleAdd={handleAdd} />
       <Table.Root size="3">
         <Table.Header>
           <Table.Row>

@@ -1,0 +1,6 @@
+- Add persistent storage for paints
+- Add photo upload for paints
+- Make components more modular and shareable between paints/schemes
+- Design schemes functionality
+- Make table in paints a scrollable feature with pages
+- Add light mode

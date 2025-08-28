@@ -1,7 +1,7 @@
-import { Form } from "radix-ui";
+import { Form, Tabs } from "radix-ui";
 import { TextField, Button } from "@radix-ui/themes"
 import { Plus } from "lucide-react"
-import { type NewPaint } from "../../Paints"
+import { type NewPaint } from "../.."
 import styles from "./styles.module.scss"
 
 const fields = [
@@ -13,7 +13,7 @@ const fields = [
   {element_name: "opacity", field_name: "Opacity", required: false, error_message: "", type: "number"},
 ]
 
-export default function AddPaint({ onAdd }: { onAdd: (p: NewPaint) => void }) {
+function AddPaintDetailsForm({ onAdd }: { onAdd: (p: NewPaint) => void }) {
   return (
     <Form.Root
       onSubmit={(e) => {
@@ -28,7 +28,7 @@ export default function AddPaint({ onAdd }: { onAdd: (p: NewPaint) => void }) {
           const v = data.get(k)?.toString().trim();
           return v ? Number(v) : undefined;
         }
-
+        
         const new_paint: NewPaint = {
           colour_name: str("colour_name"),
           manufacturer: str("manufacturer"),
@@ -47,8 +47,8 @@ export default function AddPaint({ onAdd }: { onAdd: (p: NewPaint) => void }) {
           <Form.Label className={styles.formLabel}>
             {field.field_name}
           </Form.Label>
-          <Form.Control asChild>
-            <TextField.Root placeholder={field.required ? "Required" + " " + field.type: "Optional" + " " + field.type} required={field.required} key={field.element_name}>
+          <Form.Control asChild className={styles.formControl}>
+            <TextField.Root placeholder={field.required ? "Required" + " " + field.type: "Optional" + " " + field.type} required={field.required} key={field.element_name} className={styles.textFieldRoot}>
               <TextField.Slot className={styles.textFieldSlot}>
                 <Plus size={15}/>
               </TextField.Slot>
@@ -60,28 +60,23 @@ export default function AddPaint({ onAdd }: { onAdd: (p: NewPaint) => void }) {
         <Button mt="3" variant="soft">Add Paint</Button>
       </Form.Submit>
     </Form.Root>
-  );
+  )
 }
 
-    //     <Form.Field name={field.element_name} className={styles.paintField}>
-    //       <Form.Label asChild>
-    //         <Text className={styles.fieldName}>{field.field_name}</Text>
-    //       </Form.Label>
-    //         <TextField.Root key={field.element_name} required={field.required} placeholder={field.required ? "Required" : "Optional"}>
-    //         <TextField.Slot>
-    //           <Plus size={16} aria-hidden />
-    //         </TextField.Slot>
-    //         <Form.Control asChild type="">
-    //             <TextField.Slot>
-    //             </TextField.Slot>
-    //         </Form.Control>
-    //       </TextField.Root>
-    //       <Form.Message match="valueMissing" asChild>
-    //         <Text color="red">{field.error_message}</Text>
-    //       </Form.Message>
-    //     </Form.Field>
-    //   ))}
-    //   <Form.Submit asChild>
-    //     <Button mt="3" variant="soft">Add Paint</Button>
-    //   </Form.Submit>
-    // </Form.Root>
+export default function AddPaint({ onAdd }: { onAdd: (p: NewPaint) => void }) {
+  return (
+    <Tabs.Root>
+      <Tabs.List>
+        <Tabs.Trigger value="details">
+          Details
+        </Tabs.Trigger>
+        <Tabs.Trigger value="img-upload">
+          Image
+        </Tabs.Trigger>
+      </Tabs.List>
+      <Tabs.Content value="details" className={styles.detailsTab}>
+        <AddPaintDetailsForm onAdd={onAdd} />
+      </Tabs.Content>
+    </Tabs.Root>
+  );
+}

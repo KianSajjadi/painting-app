@@ -1,0 +1,18 @@
+.addPaintButton {
+  &:hover {
+    color: var(--cyan-10)
+  }
+}
+
+.popoverContent {
+  z-index: 2;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.popoverCard {
+  background: var(--color-panel);
+  border: 1px solid var(--cyan-6);
+  box-shadow: var(--shadow-6);
+}
