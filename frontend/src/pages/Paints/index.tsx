@@ -1,6 +1,7 @@
-import { Table, Text, Box } from "@radix-ui/themes";
+import { Table, Text, Box, AspectRatio, Container, Dialog, Button } from "@radix-ui/themes";
 import { ScrollArea } from "radix-ui";
 import { useState, useRef } from "react";
+import { X } from "lucide-react"
 import AddPaintCard from "./components/AddPaint";
 import styles from "./styles.module.scss"
 
@@ -19,6 +20,10 @@ export type NewPaint = Omit<Paint, "id">;
 
 type Column = keyof Paint;
 
+import img0 from "../../assets/paints-test-1.jpg";
+import img1 from "../../assets/schemes-test-1.jpg";
+import img2 from "../../assets/schemes-test-2.jpg";
+import img3 from "../../assets/schemes-test-3.jpg";
 // Placeholder - will get this from db at some point
 const initial_paints: Paint[] = [
   {
@@ -27,7 +32,8 @@ const initial_paints: Paint[] = [
     manufacturer: "Monument Hobbies",
     vessel: "dropper",
     range: "Pro Acryl",
-    image_path: ""
+    sku: "3",
+    image_path: img0
   },
   {
     id: 1,
@@ -35,6 +41,7 @@ const initial_paints: Paint[] = [
     manufacturer: "Vallejo",
     vessel: "dropper",
     range: "game colour",
+    image_path: img1
   },
   {
     id: 2,
@@ -42,6 +49,7 @@ const initial_paints: Paint[] = [
     manufacturer: "Vallejo",
     vessel: "dropper",
     range: "game colour",
+    image_path: img2
   },
   {
     id: 3,
@@ -49,6 +57,7 @@ const initial_paints: Paint[] = [
     range: "game colour",
     manufacturer: "Vallejo",
     vessel: "dropper",
+    image_path: img3
   },
   {
     id: 4,
@@ -74,7 +83,7 @@ const columns: Column[] = [
   "vessel",
   "sku",
   "opacity",
-  "image",
+  "image_path",
 ];
 
 const better_column_names: Record<Column, string> = {
@@ -85,6 +94,7 @@ const better_column_names: Record<Column, string> = {
   range: "Range",
   sku: "SKU",
   opacity: "Opacity",
+  image_path: "Image"
 };
 
 export default function Paints() {
@@ -102,7 +112,6 @@ export default function Paints() {
   };
 
   return (
-    <>
       <ScrollArea.Root className={styles.scrollAreaRoot}>
         <ScrollArea.Viewport className={styles.scrollAreaViewport}> 
           <Table.Root size="3">
@@ -119,7 +128,25 @@ export default function Paints() {
               {paints.map((paint, i) => (
                 <Table.Row key={i}>
                   {columns.map((column) => (
-                    <Table.Cell key={column}>{paint[column]}</Table.Cell>
+                    column == "image_path" ? 
+                    <Table.Cell>
+                      <Dialog.Root>
+                        <Dialog.Trigger>
+                          <Container className={styles.imgContainer}>
+                            <AspectRatio ratio={16 / 9}>
+                              <img src={paint[column]} alt={paint.colour_name} className={styles.img}/>
+                            </AspectRatio>
+                          </Container>
+                        </Dialog.Trigger>
+                        <Dialog.Content>
+                          <img src={paint[column]} alt={paint.colour_name} className={styles.img}/>
+                          <Dialog.Close>
+                            <Button><X /></Button>
+                          </Dialog.Close>
+                        </Dialog.Content>
+                      </Dialog.Root>
+                    </Table.Cell>
+                    : <Table.Cell>{paint[column]}</Table.Cell>
                   ))}
                 </Table.Row>
               ))}
@@ -135,6 +162,5 @@ export default function Paints() {
         <ScrollArea.Corner className={styles.scrollAreaCorner}/>
         <Box className={styles.addPaintBox}><AddPaintCard open={open} setOpen={setOpen} handleAdd={handleAdd} /></Box>
       </ScrollArea.Root>
-    </>
   );
 }
