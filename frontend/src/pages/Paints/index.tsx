@@ -1,4 +1,5 @@
-import { Table, Text } from "@radix-ui/themes"
+import { Table, Text, Button } from "@radix-ui/themes"
+import AddPaint from "../components/AddPaint"
 
 type Paint = {
   colour_name: string;
@@ -24,38 +25,41 @@ const columns: Column[] = [
   "colour_name", "manufacturer", "vessel", "range", "sku", "opacity"
 ]
 
-const better_column_names = [
-  {"colour_name": "Colour Name"},
-  {"manufacturer": "Manufacturer"},
-  {"vessel": "Vessel"},
-  {"range": "Range"},
-  {"sku": "SKU"},
-  {"opacity": "Opacity"}
-]
+const better_column_names: Record<Column, string> = {
+  colour_name: "Colour Name",
+  manufacturer: "Manufacturer",
+  vessel: "Vessel",
+  range: "Range",
+  sku: "SKU",
+  opacity: "Opacity"
+};
 
 export default function Paints() {
   return (
-    <Table.Root size="3">
-      <Table.Header>
-        <Table.Row>
-        {columns.map((column) => (
-            <Table.ColumnHeaderCell>
-              {better_column_names.map(bcn => (
-                <Text>{bcn[column]}</Text>
-              ))}
-            </Table.ColumnHeaderCell>
-        ))}
-      </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {paints.map((paint) => (
+    <>
+      <Button onClick={AddPaint}>
+        <Text>Add Paint</Text>
+      </Button>
+      <Table.Root size="3">
+        <Table.Header>
           <Table.Row>
-            {columns.map((column) => (
-              <Table.Cell key={column}>{paint[column]}</Table.Cell>
-            ))}
-          </Table.Row>
-        ))}
-      </Table.Body>
-    </Table.Root>
+          {columns.map((column) => (
+              <Table.ColumnHeaderCell key={column}>
+                  <Text>{better_column_names[column]}</Text>
+              </Table.ColumnHeaderCell>
+          ))}
+        </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {paints.map((paint, i) => (
+            <Table.Row key={i}>
+              {columns.map((column) => (
+                <Table.Cell key={column}>{paint[column]}</Table.Cell>
+              ))}
+            </Table.Row>
+          ))}
+        </Table.Body>
+      </Table.Root>
+    </>
   )
 }
