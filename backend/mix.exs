@@ -51,7 +51,9 @@ defmodule Backend.MixProject do
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:dotenv_parser, "~> 2.0", only: [:dev, :test]},
+      {:cors_plug, "~> 3.0"}
     ]
   end
 
@@ -70,4 +72,5 @@ defmodule Backend.MixProject do
       precommit: ["compile --warning-as-errors", "deps.unlock --unused", "format", "test"]
     ]
   end
+
 end

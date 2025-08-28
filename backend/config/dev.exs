@@ -2,10 +2,11 @@ import Config
 
 # Configure your database
 config :backend, Backend.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "backend_dev",
+  username: System.get_env("POSTGRES_USER", "postgres"),
+  password: System.get_env("POSTGRES_PASSWORD", "postgres"),
+  hostname: System.get_env("POSTGRES_HOST", "postgres"),
+  database: System.get_env("POSTGRES_DB", "postgres"),
+  port: 30030,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
