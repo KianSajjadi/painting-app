@@ -1,4 +1,4 @@
-import { Dialog, Theme, Button, Text } from "@radix-ui/themes";
+import { Dialog, Button, Text } from "@radix-ui/themes";
 import { Plus, X } from "lucide-react";
 import styles from "./styles.module.scss";
 import { type NewPaint } from "../..";

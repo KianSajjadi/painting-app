@@ -12,6 +12,7 @@ export type Paint = {
   range?: string;
   opacity?: number;
   sku?: string;
+  image_path?: string;
 };
 
 export type NewPaint = Omit<Paint, "id">;
@@ -22,10 +23,11 @@ type Column = keyof Paint;
 const initial_paints: Paint[] = [
   {
     id: 0,
-    colour_name: "black",
-    manufacturer: "Vallejo",
+    colour_name: "Coal Black",
+    manufacturer: "Monument Hobbies",
     vessel: "dropper",
-    range: "model colour",
+    range: "Pro Acryl",
+    image_path: ""
   },
   {
     id: 1,
@@ -72,6 +74,7 @@ const columns: Column[] = [
   "vessel",
   "sku",
   "opacity",
+  "image",
 ];
 
 const better_column_names: Record<Column, string> = {
