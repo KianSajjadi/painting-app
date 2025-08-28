@@ -1,4 +1,4 @@
-import { Flex, Box, Text } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import styles from './styles.module.scss'
 
 export default function Navbar() {

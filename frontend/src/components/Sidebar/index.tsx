@@ -1,21 +1,22 @@
 import { NavLink } from "react-router-dom";
 import { Flex, Text, Button} from "@radix-ui/themes";
-import { useState } from "react"
+import React, { useState } from "react"
+import { Brush, PaintBucket, Palette, Factory, Settings, ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./styles.module.scss"
 
 type Link = {
   path: string;
   text: string;
-  icon_path: string;
+  icon: React.ReactNode;
 }
 
-const home = {path: "/", text: "Paintman", icon_path: "P"}
+const home = {path: "/", text: "Paintman", icon: <Brush size={20}/>}
 
 const links: Link[] = [
-  {path: "/paints", text: "Paints", icon_path: "p"},
-  {path: "/schemes", text: "Schemes", icon_path: "s"},
-  {path: "/manufacturers", text: "Manufacterers", icon_path: "m"},
-  {path: "/settings", text: "Settings", icon_path: "S"}
+  {path: "/paints", text: "Paints", icon: <PaintBucket size={20}/>},
+  {path: "/schemes", text: "Schemes", icon: <Palette size={20}/>},
+  {path: "/manufacturers", text: "Manufacterers", icon: <Factory size={20}/>},
+  {path: "/settings", text: "Settings", icon: <Settings size={20}/>}
 ]
 
 function sidebarLinkClassName({ isActive }: { isActive: boolean }) {
@@ -23,8 +24,11 @@ function sidebarLinkClassName({ isActive }: { isActive: boolean }) {
 }
 
 function collapsinator(link: Link, collapsed: boolean) {
-  return collapsed ? link.icon_path : link.text
+  return collapsed ? link.icon : ( <> {link.icon} {link.text} </> )
 }
+
+const expandButton = <ChevronRight size={20}/>;
+const collapseButton = <ChevronLeft size={20}/>;
 
 export default function Sidebar() {
   const [collapsed, setCollapsed]= useState(false);
@@ -41,7 +45,7 @@ export default function Sidebar() {
           </Text>
         </NavLink>
       ))}
-      <Button className={styles.sidebarCollapseButton} onClick={() => setCollapsed((c) => !c)}>{collapsed ? "→" : "←"}</Button>
+      <Button className={styles.sidebarCollapseButton} onClick={() => setCollapsed((c) => !c)}>{collapsed ? expandButton : collapseButton}</Button>
     </Flex>
   );
 }
