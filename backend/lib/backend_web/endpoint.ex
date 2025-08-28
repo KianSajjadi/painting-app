@@ -26,6 +26,7 @@ defmodule BackendWeb.Endpoint do
     gzip: not code_reloading?,
     only: BackendWeb.static_paths()
 
+  plug CORSPlug, origin: ["http://localhost:5173", "http://localhost:3000"]
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
