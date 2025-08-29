@@ -17,7 +17,7 @@ config :backend, Backend.Repo,
 # you can enable the server option below.
 config :backend, BackendWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "7/XRPt2Ch47G3lrVlYE9S3rAWYlcktPaK2APzvK4UG96gBZ671YX3D6tKUSpr2cE",
+  secret_key_base: System.getEnv("TEST_SECRET_KEY_BASE", ""),
   server: false
 
 # In test we don't send emails
