@@ -35,6 +35,7 @@ jobs:
           format: table
           severity: ${{ env.VULN_SEVERITY }}
           exit-code: '1'
+          trivyignores: .trivyignore
   
       - name: Build and push
         uses: docker/build-push-action@v6

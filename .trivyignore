@@ -1,0 +1,5 @@
+# This is flagging @tailwind/vite as vite
+CVE-2024-23331
+
+# colors.js - i'm ok with infinite loops
+CVE-2021-23567
