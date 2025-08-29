@@ -1,4 +1,4 @@
-# Kian's painting app
+# Paintman
 ## Why make a painting app?
 One day I decided that I want to try enter the golden demon competition. Realised I'm nowhere near good enough, so I decided that atleast when I'm painting I can catalogue my paints and have defined painting schemes. I don't know how long these schemes will last due to my propensity to mix on my palette but atleast I'll have a starting point
 
