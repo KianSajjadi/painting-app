@@ -15,11 +15,7 @@ const home = { path: "/", text: "Paintman", icon: <Brush size={25} /> };
 const links: Link[] = [
   { path: "/paints", text: "Paints", icon: <PaintBucket size={20} /> },
   { path: "/schemes", text: "Schemes", icon: <Palette size={20} /> },
-  {
-    path: "/manufacturers",
-    text: "Manufacterers",
-    icon: <Factory size={20} />,
-  },
+  { path: "/models", text: "Models", icon: <Factory size={20} />, },
   { path: "/settings", text: "Settings", icon: <Settings size={20} /> },
 ];
 

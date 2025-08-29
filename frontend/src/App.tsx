@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Theme, Box, Flex, Grid } from "@radix-ui/themes";
 import Homepage from "./pages/Homepage";
-import Manufacturers from "./pages/Manufacturers";
+import Models from "./pages/Models";
 import Paints from "./pages/Paints";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -20,7 +20,7 @@ function App() {
           {/* Body */}
           <Box gridColumn="2 / -1">
             <Routes>
-              <Route path="/manufacturers" element={<Manufacturers />}></Route>
+              <Route path="/models" element={<Models />}></Route>
               <Route path="/paints" element={<Paints />}></Route>
               <Route path="/" element={<Homepage />}></Route>
             </Routes>
