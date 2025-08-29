@@ -1,9 +1,9 @@
 import { Table, Text, Box, AspectRatio, Container, Dialog, Button, IconButton, Tooltip } from "@radix-ui/themes";
 import { ScrollArea } from "radix-ui";
 import { useState, useRef } from "react";
-import { X, ZoomIn } from "lucide-react"
+import { X, ZoomIn } from "lucide-react";
 import AddPaintCard from "./components/AddPaint";
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 
 export type Paint = {
   id: number;
@@ -33,7 +33,7 @@ const initial_paints: Paint[] = [
     vessel: "dropper",
     range: "Pro Acryl",
     sku: "3",
-    image_path: img0
+    image_path: img0,
   },
   {
     id: 1,
@@ -41,7 +41,7 @@ const initial_paints: Paint[] = [
     manufacturer: "Vallejo",
     vessel: "dropper",
     range: "game colour",
-    image_path: img1
+    image_path: img1,
   },
   {
     id: 2,
@@ -49,7 +49,7 @@ const initial_paints: Paint[] = [
     manufacturer: "Vallejo",
     vessel: "dropper",
     range: "game colour",
-    image_path: img2
+    image_path: img2,
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ const initial_paints: Paint[] = [
     range: "game colour",
     manufacturer: "Vallejo",
     vessel: "dropper",
-    image_path: img3
+    image_path: img3,
   },
   {
     id: 4,
@@ -75,16 +75,7 @@ const initial_paints: Paint[] = [
   },
 ];
 
-const columns: Column[] = [
-  "id",
-  "colour_name",
-  "range",
-  "manufacturer",
-  "vessel",
-  "sku",
-  "opacity",
-  "image_path",
-];
+const columns: Column[] = ["id", "colour_name", "range", "manufacturer", "vessel", "sku", "opacity", "image_path"];
 
 const better_column_names: Record<Column, string> = {
   id: "ID",
@@ -94,16 +85,14 @@ const better_column_names: Record<Column, string> = {
   range: "Range",
   sku: "SKU",
   opacity: "Opacity",
-  image_path: "Image"
+  image_path: "Image",
 };
 
 export default function Paints() {
   const [paints, setPaints] = useState<Paint[]>(initial_paints);
   const [open, setOpen] = useState(false);
 
-  const nextIdRef = useRef(
-    paints.length ? Math.max(...paints.map((x) => x.id)) + 1 : 1,
-  );
+  const nextIdRef = useRef(paints.length ? Math.max(...paints.map((x) => x.id)) + 1 : 1);
 
   const handleAdd = (p: NewPaint) => {
     const with_id: Paint = { id: nextIdRef.current++, ...p };
@@ -112,23 +101,23 @@ export default function Paints() {
   };
 
   return (
-      <ScrollArea.Root className={styles.scrollAreaRoot}>
-        <ScrollArea.Viewport className={styles.scrollAreaViewport}> 
-          <Table.Root size="3">
-            <Table.Header>
-              <Table.Row>
-                {columns.map((column) => (
-                  <Table.ColumnHeaderCell key={column}>
-                    <Text>{better_column_names[column]}</Text>
-                  </Table.ColumnHeaderCell>
-                ))}
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {paints.map((paint, i) => (
-                <Table.Row key={i}>
-                  {columns.map((column) => (
-                    column == "image_path" ? 
+    <ScrollArea.Root className={styles.scrollAreaRoot}>
+      <ScrollArea.Viewport className={styles.scrollAreaViewport}>
+        <Table.Root size="3">
+          <Table.Header>
+            <Table.Row>
+              {columns.map((column) => (
+                <Table.ColumnHeaderCell key={column}>
+                  <Text>{better_column_names[column]}</Text>
+                </Table.ColumnHeaderCell>
+              ))}
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {paints.map((paint, i) => (
+              <Table.Row key={i}>
+                {columns.map((column) =>
+                  column == "image_path" ? (
                     <Table.Cell>
                       <Dialog.Root>
                         <Tooltip content="Click to zoom in">
@@ -144,28 +133,34 @@ export default function Paints() {
                           </Dialog.Trigger>
                         </Tooltip>
                         <Dialog.Content>
-                          <img src={paint[column]} alt={paint.colour_name} className={styles.img}/>
-                          <Dialog.Close >
-                            <Button><X /></Button>
+                          <img src={paint[column]} alt={paint.colour_name} className={styles.img} />
+                          <Dialog.Close>
+                            <Button>
+                              <X />
+                            </Button>
                           </Dialog.Close>
                         </Dialog.Content>
                       </Dialog.Root>
                     </Table.Cell>
-                    : <Table.Cell>{paint[column]}</Table.Cell>
-                  ))}
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table.Root>
-        </ScrollArea.Viewport>
-        <ScrollArea.Scrollbar orientation="horizontal" className={styles.scrollAreaScrollBar}>
-          <ScrollArea.Thumb className={styles.scrollAreaThumb}/>
-        </ScrollArea.Scrollbar>
-        <ScrollArea.Scrollbar orientation="vertical" className={styles.scrollAreaScrollBar}>
-          <ScrollArea.Thumb className={styles.scrollAreaThumb}/>
-        </ScrollArea.Scrollbar>
-        <ScrollArea.Corner className={styles.scrollAreaCorner}/>
-        <Box className={styles.addPaintBox}><AddPaintCard open={open} setOpen={setOpen} handleAdd={handleAdd} /></Box>
-      </ScrollArea.Root>
+                  ) : (
+                    <Table.Cell>{paint[column]}</Table.Cell>
+                  ),
+                )}
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table.Root>
+      </ScrollArea.Viewport>
+      <ScrollArea.Scrollbar orientation="horizontal" className={styles.scrollAreaScrollBar}>
+        <ScrollArea.Thumb className={styles.scrollAreaThumb} />
+      </ScrollArea.Scrollbar>
+      <ScrollArea.Scrollbar orientation="vertical" className={styles.scrollAreaScrollBar}>
+        <ScrollArea.Thumb className={styles.scrollAreaThumb} />
+      </ScrollArea.Scrollbar>
+      <ScrollArea.Corner className={styles.scrollAreaCorner} />
+      <Box className={styles.addPaintBox}>
+        <AddPaintCard open={open} setOpen={setOpen} handleAdd={handleAdd} />
+      </Box>
+    </ScrollArea.Root>
   );
 }

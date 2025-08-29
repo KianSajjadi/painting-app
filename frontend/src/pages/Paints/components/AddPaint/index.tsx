@@ -18,28 +18,31 @@ export default function AddPaint(props: addButtonProps) {
           <Plus />
         </Button>
       </Dialog.Trigger>
-        <Dialog.Content>
-          <Dialog.Title><Text>Add Paint</Text></Dialog.Title>
-          <Dialog.Description>
-            <Text>Add paint description</Text>
-          </Dialog.Description>
-          <AddPaintCard onAdd={props.handleAdd} />
-					<Dialog.Close>
-						<Button className={styles.closeDialogButton} variant="soft"><X /></Button>
-					</Dialog.Close>
-        </Dialog.Content>
+      <Dialog.Content>
+        <Dialog.Title>
+          <Text>Add Paint</Text>
+        </Dialog.Title>
+        <Dialog.Description>
+          <Text>Add paint description</Text>
+        </Dialog.Description>
+        <AddPaintCard onAdd={props.handleAdd} />
+        <Dialog.Close>
+          <Button className={styles.closeDialogButton} variant="soft">
+            <X />
+          </Button>
+        </Dialog.Close>
+      </Dialog.Content>
     </Dialog.Root>
   );
 }
 
-
-    // <Dialog.Root open={props.open} onOpenChange={props.setOpen}>
-    //   <Dialog.Trigger asChild>
-    //     <Button className={styles.addPaintButton} variant="soft">
-    //       <Plus />
-    //     </Button>
-    //   </Dialog.Trigger>
-    //   <Dialog.Content className={styles.popoverContent}>
-    //     <AddPaintCard onAdd={props.handleAdd} />
-    //   </Dialog.Content>
-    // </Dialog.Root>
+// <Dialog.Root open={props.open} onOpenChange={props.setOpen}>
+//   <Dialog.Trigger asChild>
+//     <Button className={styles.addPaintButton} variant="soft">
+//       <Plus />
+//     </Button>
+//   </Dialog.Trigger>
+//   <Dialog.Content className={styles.popoverContent}>
+//     <AddPaintCard onAdd={props.handleAdd} />
+//   </Dialog.Content>
+// </Dialog.Root>
