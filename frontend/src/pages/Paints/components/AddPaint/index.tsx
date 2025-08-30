@@ -1,8 +1,9 @@
-import { Dialog, Button, Text } from "@radix-ui/themes";
-import { Plus, X } from "lucide-react";
-import styles from "./styles.module.scss";
-import { type NewPaint } from "../..";
-import AddPaintCard from "../AddPaintCard";
+import { Button, Dialog, Text } from '@radix-ui/themes';
+import { Plus, X } from 'lucide-react';
+
+import { type NewPaint } from '../..';
+import AddPaintCard from '../AddPaintCard';
+import styles from './styles.module.scss';
 
 type addButtonProps = {
   open: boolean;

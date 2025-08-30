@@ -12,7 +12,11 @@ Frontend:
 - radix-ui
 
 Backend:
-- Phoenix (Elixir)
+- ~~Phoenix (Elixir)~~
+- Gin (Golang)
+
+I've swapped to golang for my backend for now.
+I'll either refactor the entire app to use phoenix with ecto and liveview or my next application will be phoenix
 
 ### Addons
 - nothing yet

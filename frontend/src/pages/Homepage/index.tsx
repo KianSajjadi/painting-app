@@ -1,4 +1,4 @@
-import { Flex, Text, Button } from "@radix-ui/themes";
+import { Button, Flex, Text } from '@radix-ui/themes';
 
 export default function MyApp() {
   return (

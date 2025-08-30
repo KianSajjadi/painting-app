@@ -29,10 +29,10 @@
   &:hover {
     background: var(--black-a5);
   }
-  &[data-orientation="vertical"] {
+  &[data-orientation='vertical'] {
     width: var(--scrollbar-size);
   }
-  &[data-orientation="horizontal"] {
+  &[data-orientation='horizontal'] {
     flex-direction: column;
     height: var(--scrollbar-size);
   }
@@ -46,7 +46,7 @@
 
   /* increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html */
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;

@@ -21,6 +21,7 @@
   &:hover:not(:focus) {
     background: var(--orange-3);
   }
+  z-index: 10;
 }
 
 .sidebarLinkActive {
@@ -41,4 +42,9 @@
   &:hover {
     background: var(--orange-5);
   }
+}
+
+.icon {
+  padding-left: 5px;
+  padding-right: 5px;
 }

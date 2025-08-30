@@ -1,4 +1,4 @@
-import manufacturers_placeholder from "../../assets/manufacturers-placeholder.jpg";
+import manufacturers_placeholder from '../../assets/manufacturers-placeholder.jpg';
 
 // Placeholder - will get this from db at some point
 export default function Models() {

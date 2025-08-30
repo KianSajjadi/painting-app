@@ -5,5 +5,5 @@
 - Make table in paints a scrollable feature with pages
 - Add light mode
 - Switch to tailwindcss
-- Add models page, remove manufacturers page
+- ~~Add models page, remove manufacturers page~~
 - Findout resources layout for phoenix

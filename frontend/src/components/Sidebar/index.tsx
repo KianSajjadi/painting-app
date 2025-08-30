@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { Flex, Text, Button } from "@radix-ui/themes";
-import React, { useState } from "react";
-import { Brush, PaintBucket, Palette, Factory, Settings, ChevronLeft, ChevronRight } from "lucide-react";
-import styles from "./styles.module.scss";
+import { Button, Flex, Text } from '@radix-ui/themes';
+import { Brush, ChevronLeft, ChevronRight, PaintBucket, Palette, PersonStanding, Settings } from 'lucide-react';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
+import styles from './styles.module.scss';
 
 type Link = {
   path: string;
@@ -10,22 +11,22 @@ type Link = {
   icon: React.ReactNode;
 };
 
-const home = { path: "/", text: "Paintman", icon: <Brush size={25} /> };
+const home = { path: '/', text: 'Paintman', icon: <Brush size={25} /> };
 
 const links: Link[] = [
-  { path: "/paints", text: "Paints", icon: <PaintBucket size={20} /> },
-  { path: "/schemes", text: "Schemes", icon: <Palette size={20} /> },
-  { path: "/models", text: "Models", icon: <Factory size={20} /> },
-  { path: "/settings", text: "Settings", icon: <Settings size={20} /> },
+  { path: '/paints', text: 'Paints', icon: <PaintBucket size={20} className={styles.icon}/> },
+  { path: '/schemes', text: 'Schemes', icon: <Palette size={20} className={styles.icon}/> },
+  { path: '/models', text: 'Models', icon: <PersonStanding size={20} className={styles.icon}/> },
+  { path: '/settings', text: 'Settings', icon: <Settings size={20} className={styles.icon}/> },
 ];
 
 function sidebarLinkClassName({ isActive }: { isActive: boolean }) {
-  return isActive ? [styles.sidebarLink, styles.sidebarLinkActive].join(" ") : styles.sidebarLink;
+  return isActive ? [styles.sidebarLink, styles.sidebarLinkActive].join(' ') : styles.sidebarLink;
 }
 
 function collapsinator(link: Link, collapsed: boolean) {
   return (
-    <Text size={link.text == "Paintman" ? "5" : "3"} align="center">
+    <Text size={link.text == 'Paintman' ? '5' : '3'} align="center">
       {link.icon} {!collapsed && link.text}
     </Text>
   );
