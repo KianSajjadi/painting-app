@@ -40,7 +40,7 @@ export default function Sidebar() {
 
   return (
     <Flex direction="column" gap="3" className={styles.root}>
-      <NavLink to="/" className={sidebarLinkClassName}>
+      <NavLink to="/" className={styles.sidebarLinkMain}>
         {collapsinator(home, collapsed)}
       </NavLink>
       {links.map((link) => (

@@ -9,6 +9,15 @@
   }
 }
 
+.sidebarLinkMain {
+  color: var(--cyan-11);
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: 500;
+  z-index: 10;
+}
+
 .sidebarLink {
   color: var(--cyan-11);
   text-decoration: none;
