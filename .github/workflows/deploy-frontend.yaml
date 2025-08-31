@@ -19,6 +19,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Preflight - show GHCR target
+        run: |
+          echo "actor=${{ github.actor }}"
+          echo "repo_owner=${{ github.repository_owner }}"
+          echo "GHCR_REPO='${GHCR_REPO}'"
+          if ! echo "$GHCR_REPO" | grep -Eq '^ghcr\.io/[a-z0-9][a-z0-9._-]*/[a-z0-9._-]+$'; then
+            echo "::error::GHCR_REPO must look like ghcr.io/kiansajjadi/paintman-frontend (all lowercase, no spaces)"
+            exit 1
+          fi
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Buildx
